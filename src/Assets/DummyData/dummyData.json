@@ -1,0 +1,53 @@
+{
+    "Front": [
+        {
+            "coords": "530,196,528,367,559,367,603,370,607,377,694,383,1030,408,1063,399,1063,245,685,176,625,169",
+            "goTo": "South"
+        },
+        {
+            "coords": "262,402,367,394,368,369,451,362,452,378,528,366,528,236,265,296",
+            "goTo": "West"
+        }
+    ],
+    "South": [
+        {
+            "id": "B03",
+            "RomInformasjon": {
+                "Etasje": "Tredje",
+                "Bruttoareal": 71,
+                "Primærrom": 66,
+                "Balkong": 20.2,
+                "Soverrom": 2,
+                "Parkering": true,
+                "Heis": true,
+                "Fellesutgifter": 2607,
+                "Pris": "3 700 000",
+                "Status": "Solgt!"
+            },
+            "Images": [
+                { "url": "http://sandbakktunet.no/wp-content/themes/sandbakktunet/3d/06.png", "alt": "something"},
+                { "url": "http://sandbakktunet.no/wp-content/themes/sandbakktunet/plantegning/06.jpg", "alt": "something" }
+            ],
+            "coords": "335,400,439,393,459,395,696,376,696,298,461,320,441,314,340,324,337,324"
+        },{
+            "id": "B01",
+            "RomInformasjon": {
+                "Etasje": "Første",
+                "Bruttoareal": 76.5,
+                "Primærrom": 81.5,
+                "Balkong": 9.6,
+                "Soverom": 2,
+                "Parkering": true,
+                "Heis": true,
+                "Fellesutgifter": 2605,
+                "Pris": "3 700 000",
+                "Status": "Ledig!"
+            },
+            "Images": [
+                { "url": "http://sandbakktunet.no/wp-content/themes/sandbakktunet/3d/06.png", "alt": "something"},
+                { "url": "http://sandbakktunet.no/wp-content/themes/sandbakktunet/plantegning/06.jpg", "alt": "something" }
+            ],
+            "coords": "333,477,438,473,457,476,695,463,696,378,459,397,438,392,334,400"
+        }
+    ]
+}

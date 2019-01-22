@@ -1,0 +1,9 @@
+.modal-hide:hover {
+    background-color: rgb(173, 173, 173);
+}
+
+@media only screen and (max-width: 1200px) {
+    .modal-content {
+        grid-template-columns: 1fr !important;
+    }
+}
