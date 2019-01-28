@@ -7,11 +7,9 @@ const Nav = ({showBack, goTo, showMarkings}) => {
     return (
         <div className="leilighetsvelger-nav-container">
 
-            {showBack ? <button className="leilighetsvelger-nav-back-button" onClick={(e) => goTo(e) }>Tilbake</button> : null}
+            {showBack ? <button className="leilighetsvelger-nav-back-button leilighetsvelger-nav-button" onClick={(e) => goTo(e) }>Tilbake</button> : null}
 
-            <div style={{margin: "0 auto"}}></div>
-
-            <button className="leilighetsvelger-nav-markering-button" onClick={(e) => showMarkings(e)}>Markeringer</button>
+            <button className="leilighetsvelger-nav-markering-button leilighetsvelger-nav-button" onClick={(e) => showMarkings(e)}>Markeringer</button>
         
         </div>
     )

@@ -2,7 +2,8 @@
     position: absolute;
     top: 0;
     left: 0;
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, auto));
     width: 100%;
     padding-top: 20px;
 }
@@ -17,4 +18,16 @@
     justify-self: end;
     padding-right: 0;
     margin-right: 25px;
+}
+
+.leilighetsvelger-nav-button {
+    font-family: 'Poppins', sans-serif;
+    font-size: 20px;
+    border: 1px solid black;
+    border-radius: 40px;
+    color: black;
+    background-color: white;
+    width: 170px;
+    text-align: center;
+    cursor: pointer;
 }
