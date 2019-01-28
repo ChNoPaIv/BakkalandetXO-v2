@@ -7,7 +7,7 @@ const NabolagInfoTitle = (props) => {
     }
 
     return(
-        <div className="nabolaginfo-title-container">
+        <div className="nabolaginfo-title-container" data-aos="fade-up" data-aos-duration="400">
             <h1 style={titleStyle}>Alt i nærheten!</h1>
         </div>
     )

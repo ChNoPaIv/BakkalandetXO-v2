@@ -1,64 +1,29 @@
 import React from "react";
 
+import AOS from "aos";
+import 'aos/dist/aos.css';
+
+import "./NabolagInfoImages.css";
+
 const NabolagInfoImages = ({images}) => {
 
-    console.log(images);
+    AOS.init();
 
-    const imageStyle = {
-        objectFit: "cover",
-        borderRadius: "50%",
-        height: 210,
-        width: 210,
-    }
-
-    const divImage = {
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        borderRadius: "50%",
-        height: 220,
-        width: 220,
-        backgroundColor: "rgba(255, 255, 255, 0.719)"
-    }
-
-    const divImage2 = {
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        borderRadius: "50%",
-        height: 230,
-        width: 230,
-        backgroundColor: "rgba(255, 255, 255, 0.671)",
-        margin: "0 auto",
-    }
-
-    const container = {
-        display: "grid",
-        gridTemplateRows: "auto",
-        gridTemplateColumns: "repeat(auto-fit, 400px)",
-        alignItems: "center",
-        justifyContent: "center",
-    }
-
-    const titleStyle = {
-        textAlign: "center", fontFamily: "Poppins, sans-serif", color: "white", fontWeight: 400, fontSize: 24, margin: 0, padding: "10px 0 0 0"
-    }
-
-    const subtitleStyle = {
-        textAlign: "center", fontFamily: "Poppins, sans-serif", color: "white", margin: 0, padding: 0
-    }
-    
     return(
-        <div className="nabolaginfo-picture-container" style={container}>
+        <div className="nabolaginfo-picture-container" data-aos="fade-down" data-aos-duration="1000">
         {
             images.map((elem, i) => {
                 return (
-                    <div className="nabolaginfo-picture" key={i} style={{width: "auto", height: 400}}>
+                    <div key={i} className="nabolaginfo-picture" style={{width: "auto", height: 400}}>
                     
-                        <div style={divImage2}><div style={divImage}><img style={imageStyle} alt={elem.alt} src={elem.image}/></div></div>
-                        <h3 style={titleStyle}>{elem.title}</h3>
-                        <p style={subtitleStyle}>{elem.subtitle}</p>
-                        
+                        <div className="nabolaginfo-picture-frame">
+                            <div className="nabolaginfo-picture-frame">
+                                <img className="nabolaginfo-picture-image" alt={elem.alt} src={elem.image}/>
+                            </div>
+                        </div>
+                        <h3 className="nabolaginfo-picture-title nabolaginfo-picture-text">{elem.title}</h3>
+                        <p className="nabolaginfo-picture-subtitle nabolaginfo-picture-text">{elem.subtitle}</p>
+                            
                     </div>
                 )
             })

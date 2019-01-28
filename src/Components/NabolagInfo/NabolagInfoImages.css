@@ -1,0 +1,52 @@
+.nabolaginfo-picture-container {
+    display: grid;
+    grid-template-rows: auto;
+    grid-template-columns: repeat(auto-fit, 400px);
+    align-items: center;
+    justify-content: center;
+}
+
+.nabolaginfo-picture > div {
+    height: 230px;
+    width: 230px;
+    background-color: rgba(255,255,255,0.671);
+    margin: 0 auto;
+}
+
+.nabolaginfo-picture > div > div {
+    height: 220px;
+    width: 220px;
+    background-color: rgba(255,255,255,0.719);
+}
+
+.nabolaginfo-picture-frame {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+.nabolaginfo-picture-image {
+    object-fit: cover;
+    border-radius: 50%;
+    height: 210px;
+    width: 210px;
+}
+
+.nabolaginfo-picture-title {
+    font-weight: 400;
+    font-size: 24px;
+    padding: 10px 0 0 0;
+}
+
+.nabolaginfo-picture-subtitle {
+    padding: 0;
+}
+
+.nabolaginfo-picture-text {
+    text-align: center;
+    margin: 0;
+    text-align: center;
+    font-family: "Poppins", sans-serif;
+    color: white;
+}

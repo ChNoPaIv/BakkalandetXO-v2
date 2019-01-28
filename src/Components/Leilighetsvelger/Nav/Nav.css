@@ -1,0 +1,20 @@
+.leilighetsvelger-nav-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    width: 100%;
+    padding-top: 20px;
+}
+
+.leilighetsvelger-nav-back-button {
+    justify-self: start;
+    padding: 0;
+    margin-left: 25px;
+}
+
+.leilighetsvelger-nav-markering-button {
+    justify-self: end;
+    padding-right: 0;
+    margin-right: 25px;
+}

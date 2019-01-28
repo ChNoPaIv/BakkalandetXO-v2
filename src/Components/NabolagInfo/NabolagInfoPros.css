@@ -1,0 +1,28 @@
+.nabolaginfo-pros-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 360px);
+    align-items: center;
+    justify-content: center;
+    max-width: 1460px;
+    margin: 0 auto;
+    padding: 0px 40px 70px 40px;
+    grid-column-gap: 30px;
+}
+
+.nabolaginfopros-item {
+    display: grid;
+    grid-template-columns: 40px auto auto;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid rgba(255,255,255,0.274);
+}
+
+.nabolaginfopros-svg-container {
+    justify-self: start;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #ff5100;
+    display: flex;
+    align-items: center;
+}
