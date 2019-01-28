@@ -1,36 +1,25 @@
 import React from "react";
 
+import $ from "jquery";
+
 import Page from "./Page";
 import Modal from "./Modal/Modal";
+import Nav from "./Nav/Nav";
 
 import dummyData from "./../../Assets/DummyData/dummyData.json";
 
 export default class Leilighetsvelger extends React.Component {
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            isLoading: true,
-            bgLoading: true,
-            bgImages: [],
+    state = {
+        bgLoading: true,
+        bgImages: [],
 
-            showFront: true,
-            showSouth: false,
-            showWest: false,
+        showFront: true,
+        showSouth: false,
+        showWest: false,
 
-            showModal: false,
-            modalData: {},
-        }
-        this.setFront = this.setFront.bind(this);
-        this.setSouth = this.setSouth.bind(this);
-        this.setWest = this.setWest.bind(this);
-
-        this.showModal = this.showModal.bind(this);
-        this.hideModal = this.hideModal.bind(this);
-    }
-
-    componentDidMount() {
-        this.setState({isLoading: false});
+        showModal: false,
+        modalData: {},
     }
 
     componentWillMount() {
@@ -47,27 +36,27 @@ export default class Leilighetsvelger extends React.Component {
         vest.src = westBg;
 
         front.onload = () => {
-            this.setState({ bgImages: [front.src, sor.src, vest.src] });
+            this.setState({ bgImages: [front, sor, vest] });
             this.setState({ bgLoading: false });
         }
     }
 
-    setFront(e) {
+    setFront = (e) => {
         e.preventDefault();
         this.setState({showFront: true, showWest: false, showSouth: false});
     }
 
-    setSouth(e) {
+    setSouth = (e) => {
         e.preventDefault();
         this.setState({showFront: false, showWest: false, showSouth: true});
     }
     
-    setWest(e) {
+    setWest = (e) => {
         e.preventDefault();
         this.setState({showFront: false, showWest: true, showSouth: false});
     }
 
-    showModal(e) {
+    showModal = (e) => {
         e.preventDefault();
         let id = e.target.id;
         this.setState({showModal: true}, function() {
@@ -88,14 +77,24 @@ export default class Leilighetsvelger extends React.Component {
         });
     }
 
-    hideModal() {
+    hideModal = (e) => {
         this.setState({showModal: false });
     }
 
-    render() {
-        const { isLoading, bgLoaded } = this.state;
+    showMarkings = (e) => {
+        try{
+            $(".maphilight-area").wrap(function() {
+                let data = window.$(this).data('maphilight') || {};
+                data.alwaysOn = !data.alwaysOn;
+                window.$(this).data('maphilight', data).trigger('alwaysOn.maphilight');
+            });
+        } catch(e) {}
+    }
 
-        if (isLoading || bgLoaded) {
+    render() {
+        const { bgLoading, bgImages } = this.state;
+
+        if (bgLoading) {
             return(
                 <div className="leilighetsvelger-container">
                     <div className="loader-container">
@@ -108,31 +107,40 @@ export default class Leilighetsvelger extends React.Component {
 
         return(
             <div className="leilighetsvelger-container">
-                <h2>Finn din leilighet her!</h2>
+                <h2 style={style.overtitle}>Finn din leilighet her!</h2>
                 <div className="leilighetsvelger" style={{position: "relative"}}>
                     <div className="velger-content">
                         <div className="leilighetsvelger-width ratio" id="leilighetsvelger-width">
                             <div className="contenido">
                             
-                                { this.state.showFront ? <Page goTo={[this.setFront.bind(), this.setWest.bind(), this.setSouth.bind()]} {...this.props} bgImage={this.state.bgImages[0]} 
+                                { this.state.showFront ? <Page goTo={[this.setFront.bind(), this.setWest.bind(), this.setSouth.bind()]} {...this.props} bgImage={bgImages[0]} 
                                                             side="Front" data={dummyData.Front} /> : null }
 
-                                { this.state.showWest ? <Page goTo={[this.setFront.bind(), this.setWest.bind(), this.setSouth.bind(), this.showModal.bind()]} {...this.props} bgImage={this.state.bgImages[2]} 
+                                { this.state.showWest ? <Page goTo={[this.setFront.bind(), this.setWest.bind(), this.setSouth.bind(), this.showModal.bind()]} {...this.props} bgImage={bgImages[2]} 
                                                             side="West" data={dummyData.West} /> : null}
 
-                                { this.state.showSouth ? <Page goTo={[this.setFront.bind(), this.setWest.bind(), this.setSouth.bind(), this.showModal.bind()]} {...this.props} bgImage={this.state.bgImages[1]} 
+                                { this.state.showSouth ? <Page goTo={[this.setFront.bind(), this.setWest.bind(), this.setSouth.bind(), this.showModal.bind()]} {...this.props} bgImage={bgImages[1]} 
                                                             side="South" data={dummyData.South} /> : null }
 
                             </div>
                         </div>
                     </div>
                     { this.state.showModal ? <Modal hideModal={this.hideModal.bind()} modalData={this.state.modalData} /> : null}
+
+                    <Nav showBack={ !this.state.showFront ? true : false } goTo={this.setFront.bind()} showMarkings={this.showMarkings.bind()} />
                 </div>
-
-                
-
             </div>
         )
        
+    }
+}
+
+const style = {
+    overtitle: {
+        margin: 0,
+        fontWeight: '800',
+        fontFamily: 'Poppins',
+        textAlign: "center",
+        padding: "30px 0",
     }
 }

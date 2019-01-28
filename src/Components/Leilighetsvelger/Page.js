@@ -1,28 +1,17 @@
 import React from "react";
-
+import "./Page.css";
 import $ from "jquery";
 
 class Page extends React.Component {
-    constructor(props) {
-        super(props); 
-        this.state = {
 
-        }
-    }
-    
     componentDidMount() {
-        setTimeout(() => {
-            this.setMaphilight();
-        }, 1);
+        this.setMaphilight();
     }
 
     setMaphilight() {
-        $(document).ready(function() {
-            $(function() {
-                window.$('img[usemap]').maphilight();
-                window.$('img[usemap]').rwdImageMaps();
-            })
-        });
+        window.$('img[usemap]').maphilight();
+        window.$('img[usemap]').rwdImageMaps();
+        
         $(window).resize(function() {
             window.$('img[usemap]').maphilight();
         });
@@ -41,22 +30,29 @@ class Page extends React.Component {
         }
     }
 
-    colorPicker(data, fstColor, sndColor) {
-        try {
-            return data.RomInformasjon === "Solgt!" ? sndColor : fstColor;
-        } catch(e) {
-           
-        }
-        return fstColor;
-    }
-
     render() {
 
         const {fstColor, sndColor, data, side, bgImage} = this.props;
 
         return(
             <div className={"leilighetsvelger" + side + "-container"}>
-                <img id={"leiligheter" + side} useMap={"#map-" + side} src={bgImage} alt="" style={{width: "100%"}} />
+
+                {
+                    side === "Front" ? 
+                        <React.Fragment>
+                        
+                        <div className="front-name-tag-vest-container front-nametag-container">
+                            <div onClick={(e) => this.goTo(e, data[1].goTo)} className="front-name-tag-vest front-nametag"><div>Vestsiden</div></div>
+                        </div>
+
+                        <div className="front-name-tag-sor-container front-nametag-container">
+                            <div onClick={(e) => this.goTo(e, data[0].goTo)} className="front-name-tag-sor front-nametag"><div>Sørsiden</div></div>
+                        </div>
+                        
+                        </React.Fragment> : null
+                }
+
+                <img id={"leiligheter" + side} useMap={"#map-" + side} src={bgImage.src} alt="" style={{width: "100%"}} />
                 <map id={"map-" + side} name={"map-" + side} >
                 
                     {
@@ -67,7 +63,7 @@ class Page extends React.Component {
                                 colorChoose = item.RomInformasjon.Status === "Solgt!" ? sndColor : fstColor
                             } catch(e){}
 
-                            return <area id={item.id} key={i} alt="" onClick={(e) => this.goTo(e, item.goTo)} shape="poly" data-maphilight={colorChoose} coords={item.coords} />
+                            return <area id={item.id} className={"maphilight-area"} key={i} alt="" onClick={(e) => this.goTo(e, item.goTo)} shape="poly" data-maphilight={colorChoose} coords={item.coords} />
                         })
                     }
                 

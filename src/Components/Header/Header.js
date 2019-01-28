@@ -1,47 +1,18 @@
 import React from "react" 
 
+import "./Header.css";
+
 import BackgroundImage from "./../../Assets/Images/front.jpg";
 
-const Header = ({windowHeight, title, subtitle, image}) => {
-
-    const headerStyle = {
-        background: "url(" + BackgroundImage + ")",
-        backgroundRepeat: "no-repeat",
-        backgroundPosition: "center bottom",
-        backgroundSize: "cover",
-        width: "100%",
-        overflow: "hidden",
-        height: windowHeight,
-        position: "relative",
-    }
-
-    const textContainer = {
-        textAlign: "center", 
-        position: "absolute",
-        top: 0,
-        bottom: 0,
-        left: 0,
-        right: 0,
-        width: "50%",
-        height: "20%",
-        margin: "auto",
-    }
-
-    const titleStyle = {
-        color: "white",
-        textShadow: "-1px 0 black, 0 1px black, 1px 0 black, 0 -1px black",
-    }
-
-    const subtitleStyle = {
-        color: "white",
-        textShadow: "-1px 0 black, 0 1px black, 1px 0 black, 0 -1px black"
-    }
+const Header = ({windowHeight, title, subtitle, image, titleColor}) => {
 
     return(
-        <div className="header-container" style={headerStyle}>
-            <div style={textContainer}>
-                <h1 className="header-title" style={titleStyle}>{title}</h1>
-                <h2 className="header-subtitle" style={subtitleStyle}>{subtitle}</h2>
+        <div className="header-container" style={{background: "url(" + BackgroundImage + ")", height: windowHeight}}>
+            <div style={{backgroundColor: "rgba(22, 22, 22, 0.59)", width: "100%", height: "100%"}}>
+                <div className="header-text-container" >
+                    <h1 className="header-title" style={{color: titleColor}}>{title}</h1>
+                    <h2 className="header-subtitle">{subtitle}</h2>
+                </div>
             </div>
         </div>
     )

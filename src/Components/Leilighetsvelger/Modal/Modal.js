@@ -100,9 +100,7 @@ const Modal = ({modalData, hideModal, showModal}) => {
                 
                     {
                         modalData.Images.map((image, i) => {
-
                             if (i === 0) { return null }
-
                             return <img style={imageStyle} key={i} alt={image.alt} src={image.url} />
                         })
                     }

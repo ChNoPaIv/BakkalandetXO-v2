@@ -10,12 +10,8 @@ import Leilighetsvelger from "./../Components/Leilighetsvelger/Leilighetsvelger"
 
 export default class Home extends Component {
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            windowHeight: 0
-        }
-        this.updateDimensions = this.updateDimensions.bind(this);
+    state = {
+        windowHeight: 0
     }
 
     componentWillMount() {
@@ -27,18 +23,21 @@ export default class Home extends Component {
         window.removeEventListener('resize', this.updateDimensions);
     }
 
-    updateDimensions() {
+    updateDimensions = () => {
         this.setState({ windowHeight: window.innerHeight});
     }
 
     render() {
+
+        const { windowHeight } = this.state;
+
         return(
             <div className="home-container">
                 <Navbar textColor="white" logo={"Bakkalandet XO"} array={["Home", "Info", "Leilighetsvelger", "Kontakt"]} />
-                <Header windowHeight={this.state.windowHeight} title="Bakkalandet XO" subtitle="Something cool I guess..." />
+                <Header windowHeight={windowHeight} title="Bakkalandet XO" subtitle="28 leiligheter midt i kolvereid sentrum!" titleColor="#ff8800" />
                 <NabolagInfo />
 
-                <Leilighetsvelger fstColor={"{\"strokeColor\":\"16a085\",\"strokeWidth\":3,\"fillColor\":\"16a085\",\"fillOpacity\":0.45}"} sndColor={"strokeColor\":\"16a085\",\"strokeWidth\":3,\"fillColor\":\"16a085\",\"fillOpacity\":0.45"} />
+                <Leilighetsvelger fstColor={"{\"strokeColor\":\"16a085\",\"strokeWidth\":3,\"fillColor\":\"16a085\",\"fillOpacity\":0.45}"} sndColor={"{\"strokeColor\":\"FF4823\",\"strokeWidth\":3,\"fillColor\":\"FF4823\",\"fillOpacity\":0.45}"} />
 
 
                 <div className="placeholder contact" style={{height: 1000}} ></div>
