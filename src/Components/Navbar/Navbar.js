@@ -1,50 +1,42 @@
 import React from "react";
 
-const NavbarComp = ({logo, array, textColor}) => {
+import "./Navbar.css";
 
-    const container = {
-        display: "flex",
-        width: "100%",
-        padding: 0,
-        listStyle: "none",
-        position: "absolute",
-        zIndex: 1
+class Navbar extends React.Component {
+
+    state = {
+        refList: this.props.refList,
     }
 
-    const logoContainer = {
-        padding: "10px 20px",
-        color: textColor,
+    goTo = (ref) => {
+        window.scrollTo({ top: ref.current.offsetTop, left: 0, behavior: 'smooth' });
     }
 
-    const navbarStyle = {
-        display: "flex",
-        flexDirection: "row",
-        flexWrap: "wrap",
-        justifyContent: "flex-end",
-        alignItems: "center",
+    render() {
+        const {refList} = this.state;
+        const {logo, array, textColor} = this.props; 
 
+
+        return(
+            <ul className="navbar-container" role="navigation">
+                <li><div className="navbar-logo-container" style={{color: textColor}}>{logo}</div></li>
+    
+                <li style={{margin: "0 auto"}}><div className="navbar-space" ></div></li>
+    
+                <li><div className="navbar-goto">
+    
+                    {
+                        array.map((text, i) => {
+                            const textStyle = { color: textColor}
+                            const ref = refList[i];
+
+                            return <div key={i} onClick={(e) => this.goTo(ref)} className="navbar-gotolist" style={textStyle}>{text}</div>
+                        })
+                    }
+                </div></li>
+            </ul>
+        )
     }
-
-    return(
-        <ul className="navbar-container" role="navigation" style={container}>
-            <li><div className="navbar-logo-container" style={logoContainer}>{logo}</div></li>
-
-            <li style={{margin: "0 auto"}}><div className="navbar-space" ></div></li>
-
-            <li><div className="navbar" style={navbarStyle}>
-
-                {
-                    array.map((text, i) => {
-                        const textStyle = {
-                            padding: "10px 20px",
-                            color: textColor,
-                        }
-                        return <div key={i} style={textStyle}>{text}</div>
-                    })
-                }
-            </div></li>
-        </ul>
-    )
 }
 
-export default NavbarComp;
+export default Navbar;

@@ -31,3 +31,7 @@
     text-align: center;
     cursor: pointer;
 }
+
+.leilighetsvelger-nav-button:active {
+    background-color: rgb(177, 177, 177);
+}

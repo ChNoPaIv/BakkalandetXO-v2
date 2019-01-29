@@ -10,10 +10,17 @@ import Leilighetsvelger from "./../Components/Leilighetsvelger/Leilighetsvelger"
 
 export default class Home extends Component {
 
+    infoRef = React.createRef();
+    leiligheterRef = React.createRef();
+    contactRef = React.createRef();
     state = {
-        windowHeight: 0
+        windowHeight: 0,
     }
 
+    componentDidMount() {
+        window.scrollTo(0, this.infoRef.current.offsetTop);
+    }
+ 
     componentWillMount() {
         this.updateDimensions();
         window.addEventListener('resize', this.updateDimensions);
@@ -33,15 +40,15 @@ export default class Home extends Component {
 
         return(
             <div className="home-container">
-                <Navbar textColor="white" logo={"Bakkalandet XO"} array={["Home", "Info", "Leilighetsvelger", "Kontakt"]} />
+                <Navbar textColor="white" logo={"Bakkalandet XO"} array={["Info", "Leilighetsvelger", "Kontakt"]} refList={[this.infoRef, this.leiligheterRef, this.contactRef]} />
                 <Header windowHeight={windowHeight} title="Bakkalandet XO" subtitle="28 leiligheter midt i kolvereid sentrum!" titleColor="#ff8800" />
-                <NabolagInfo />
+                <NabolagInfo setRef={this.infoRef} />
 
-                <Leilighetsvelger fstColor={"{\"strokeColor\":\"16a085\",\"strokeWidth\":3,\"fillColor\":\"16a085\",\"fillOpacity\":0.45}"} sndColor={"{\"strokeColor\":\"FF4823\",\"strokeWidth\":3,\"fillColor\":\"FF4823\",\"fillOpacity\":0.45}"} />
+                <Leilighetsvelger setRef={this.leiligheterRef} fstColor={"{\"strokeColor\":\"16a085\",\"strokeWidth\":3,\"fillColor\":\"16a085\",\"fillOpacity\":0.45}"} sndColor={"{\"strokeColor\":\"FF4823\",\"strokeWidth\":3,\"fillColor\":\"FF4823\",\"fillOpacity\":0.45}"} />
 
 
-                <div className="placeholder contact" style={{height: 1000}} ></div>
-            </div>
+                <div ref={this.contactRef} className="placeholder contact" style={{height: 1000}} ></div>
+            </div> 
         )
     }
 }

@@ -93,10 +93,11 @@ export default class Leilighetsvelger extends React.Component {
 
     render() {
         const { bgLoading, bgImages } = this.state;
+        const { setRef } = this.props;
 
         if (bgLoading) {
             return(
-                <div className="leilighetsvelger-container">
+                <div ref={setRef} className="leilighetsvelger-container">
                     <div className="loader-container">
                         <h2>Laster inn...</h2>
                         <div className="loader"></div>
@@ -106,7 +107,7 @@ export default class Leilighetsvelger extends React.Component {
         }
 
         return(
-            <div className="leilighetsvelger-container">
+            <div ref={setRef} className="leilighetsvelger-container">
                 <h2 style={style.overtitle}>Finn din leilighet her!</h2>
                 <div className="leilighetsvelger" style={{position: "relative"}}>
                     <div className="velger-content">

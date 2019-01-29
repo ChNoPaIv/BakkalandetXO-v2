@@ -12,18 +12,21 @@ import bilde1 from "./../../Assets/Images/front.jpg";
 import bilde2 from "./../../Assets/Images/ungdomskole.jpg";
 import bilde3 from "./../../Assets/Images/kolvereid.jpg";
 
-export default class NabolagInfo extends React.Component {
+class NabolagInfo extends React.Component {
 
     render() {
+
+        const { setRef } = this.props;
+
         const style = {
             backgroundImage: "url(" + BackgroundImage + ")",
             backgroundRepeat: "no-repeat",
             backgroundPosition: "center",
             backgroundSize: "cover",
         }
-
+    
         return(
-            <div className="nabolaginfo-container" style={style}>
+            <div ref={setRef} className="nabolaginfo-container" style={style}>
                 <div style={{backgroundColor: "rgba(22, 22, 22, 0.767)"}}>
                     <Title title="" />
                     <Images images={imagesDummyData}/>
@@ -82,3 +85,5 @@ const prosDummyData = [
         type: mdiFerry, title: "Småbåtshavna", distance: 1.1
     }
 ]
+
+export default NabolagInfo;
