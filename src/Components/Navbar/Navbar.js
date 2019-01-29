@@ -21,8 +21,6 @@ class Navbar extends React.Component {
             <ul className="navbar-container" role="navigation">
                 <li><div className="navbar-logo-container" style={{color: textColor}}>{logo}</div></li>
     
-                <li style={{margin: "0 auto"}}><div className="navbar-space" ></div></li>
-    
                 <li><div className="navbar-goto">
     
                     {
@@ -30,7 +28,7 @@ class Navbar extends React.Component {
                             const textStyle = { color: textColor}
                             const ref = refList[i];
 
-                            return <div key={i} onClick={(e) => this.goTo(ref)} className="navbar-gotolist" style={textStyle}>{text}</div>
+                            return <p key={i} onClick={(e) => this.goTo(ref)} className="navbar-goto-text" style={textStyle}>{text}</p>
                         })
                     }
                 </div></li>

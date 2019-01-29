@@ -1,5 +1,6 @@
 .navbar-container {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, auto));
     width: 100%;
     padding: 0;
     list-style: none;
@@ -19,8 +20,9 @@
     align-items: center;
 }
 
-.navbar-gotolist {
+.navbar-goto-text {
     padding: 10px 20px;
     font-family: 'Poppins', sans-serif;
     cursor: pointer;
+    margin: 0;
 }
